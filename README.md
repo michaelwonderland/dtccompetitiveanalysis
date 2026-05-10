@@ -2,6 +2,19 @@
 
 A provider-agnostic ecommerce review scraper, packaged as a Claude Code toolkit. Point it at a list of competitor domains, get back structured review data per product, distinctive-phrase synthesis across the corpus, and HTML dashboards. The strategic narrative is yours (or Claude's) to write — this toolkit gives you the evidence.
 
+## 📕 Read the field guide first
+
+Before cloning, read **[Using Claude Code for DTC Competitive Analysis](docs/field-guide.pdf)** — a 17‑page field guide for ecommerce marketers that walks through the five Claude Code prompts that built this toolkit, the operator questions to ask once it's loaded, and the patterns that compound across competitive sets.
+
+The guide is the *why* and the *how to direct Claude*. This repo is the *what* — the reusable Python package the prompts produce. You can either:
+
+- **Clone this repo** and run the toolkit directly (instructions below), or
+- **Read the guide and recreate it from scratch** by walking through the prompts in your own Claude Code session — the toolkit will materialize as you go.
+
+Both paths land you in the same place.
+
+---
+
 ## What it does
 
 - **Scrapes reviews** from ecommerce sites by intercepting the network calls that the site's own review widget makes (Yotpo, Judge.me, Okendo, Stamped, Loox, Bazaarvoice, etc.). No provider-specific code; the scraper identifies whichever review API the site uses and follows its pagination.
