@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ecom-competitive-analysis"
+version = "0.1.0"
+description = "Provider-agnostic ecommerce review scraper + theme synthesis. Designed to be operated by Claude Code."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [{ name = "Michael Lorenzos" }]
+keywords = ["ecommerce", "competitive-analysis", "reviews", "scraper", "claude"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP",
+]
+dependencies = [
+    "playwright>=1.45.0",
+    "httpx>=0.27.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=5.0.0",
+    "jinja2>=3.1.0",
+    "click>=8.1.0",
+]
+
+[project.scripts]
+eca = "eca.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/michaelwonderland/dtccompetitiveanalysis"
+
+[tool.setuptools.packages.find]
+include = ["eca*"]
