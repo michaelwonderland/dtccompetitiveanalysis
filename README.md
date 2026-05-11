@@ -9,9 +9,39 @@ Before cloning, read **[Using Claude Code for DTC Competitive Analysis](docs/fie
 The guide is the *why* and the *how to direct Claude*. This repo is the *what* — the reusable Python package the prompts produce. You can either:
 
 - **Clone this repo** and run the toolkit directly (instructions below), or
+- **Install one of the Claude skills** (see below) and use it from any Claude Code session anywhere on your machine, or
 - **Read the guide and recreate it from scratch** by walking through the prompts in your own Claude Code session — the toolkit will materialize as you go.
 
-Both paths land you in the same place.
+All three paths land you in the same place.
+
+## 🛠 Claude skills
+
+Two Claude skills ship with this repo. Install either or both into `~/.claude/skills/` and they'll trigger automatically when you talk to Claude about scraping reviews or running a competitive analysis — no need to be in this folder.
+
+| Skill | Triggers on | What it does |
+|---|---|---|
+| **`wonderland-review-scraper`** | "scrape reviews from [site]", "pull customer feedback for [brand]" | Pulls structured review data (CSV + HTML) from any ecommerce site. Provider-agnostic. Surfaces anti-bot blocks honestly. |
+| **`wonderland-dtc-competitive-analysis`** | "compare [brand A] vs [brand B] vs [brand C]", "competitive analysis on [domains]" | Runs the full pipeline: scrape → aggregate → dashboard → report → surfaces operator questions for you to direct. |
+
+**Install:**
+
+```bash
+# from this repo:
+cp -r skills/wonderland-review-scraper ~/.claude/skills/
+cp -r skills/wonderland-dtc-competitive-analysis ~/.claude/skills/
+```
+
+Each skill is self-contained — installs its own copy of the scraping engine, doesn't depend on the `eca` package being installed. The dependencies (Playwright, httpx, etc.) install into a venv in your working directory the first time the skill runs.
+
+After installing, just talk to Claude naturally:
+
+> *"Scrape reviews from carawayhome.com — top 10 products."*  
+> → triggers `wonderland-review-scraper`
+>
+> *"Run a competitive analysis on carawayhome.com, fromourplace.com, hexclad.com."*  
+> → triggers `wonderland-dtc-competitive-analysis`
+
+Both skills stop and ask the user when judgment calls come up (anti-bot blocks, ToS thresholds, which strategic question to drill into) instead of silently making decisions on your behalf.
 
 ---
 
